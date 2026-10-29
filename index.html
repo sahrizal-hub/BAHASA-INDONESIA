@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1456b8">
+  <meta name="description" content="Asesmen digital Bahasa Indonesia SMK Kelas XI - Teks Prosedur">
+  <title>BAHASA INDONESIA | Genius Assessment</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark app-navbar">
+    <div class="container"><a class="navbar-brand fw-bold" href="#"><span class="brand-mark">BI</span> BAHASA INDONESIA</a><span class="navbar-text text-white-50 small">GENIUS ASSESSMENT</span></div>
+  </nav>
+  <main class="container py-4 py-lg-5">
+    <section id="start-screen" class="screen-panel start-panel mx-auto">
+      <div class="hero-icon" aria-hidden="true">📚</div>
+      <span class="eyebrow">ASESMEN DIGITAL • SMK KELAS XI</span>
+      <h1 class="display-6 fw-bold mt-2">Tunjukkan kemampuanmu!</h1>
+      <p class="lead text-secondary">Materi <strong>Teks Prosedur</strong>. Baca soal dengan cermat dan pilih jawaban terbaik.</p>
+      <div class="info-strip row g-2 my-4 text-center">
+        <div class="col-4"><div class="info-tile"><strong>25</strong><span>Soal</span></div></div>
+        <div class="col-4"><div class="info-tile"><strong>90</strong><span>Menit</span></div></div>
+        <div class="col-4"><div class="info-tile"><strong>A–E</strong><span>Pilihan</span></div></div>
+      </div>
+      <form id="identity-form" novalidate>
+        <div class="mb-3"><label for="student-name" class="form-label">Nama lengkap</label><input id="student-name" name="studentName" class="form-control form-control-lg" maxlength="100" autocomplete="name" required placeholder="Masukkan nama lengkap"><div class="invalid-feedback">Nama lengkap wajib diisi.</div></div>
+        <div class="mb-3"><label for="student-nis" class="form-label">NIS</label><input id="student-nis" name="nis" class="form-control form-control-lg" maxlength="30" required placeholder="Masukkan NIS"><div class="invalid-feedback">NIS wajib diisi.</div></div>
+        <div class="mb-4"><label for="student-class" class="form-label">Kelas</label><input id="student-class" name="studentClass" class="form-control form-control-lg" maxlength="30" required placeholder="Contoh: XI TKJ 1"><div class="invalid-feedback">Kelas wajib diisi.</div></div>
+        <div id="start-error" class="alert alert-danger d-none" role="alert"></div>
+        <button class="btn btn-primary btn-lg w-100" type="submit">Mulai Asesmen <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="small text-secondary mt-3 mb-0"><span aria-hidden="true">💡</span> Setelah jawaban dipilih, jawaban tidak dapat diubah. Waktu dimulai saat tombol ini ditekan.</p>
+    </section>
+
+    <section id="quiz-screen" class="d-none" aria-live="polite">
+      <div class="quiz-topbar screen-panel mb-3">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2"><div><div class="eyebrow">TEKS PROSEDUR</div><h2 class="h5 mb-0" id="welcome-title">Semangat mengerjakan!</h2></div><div class="timer-box" id="timer-box"><span aria-hidden="true">⏱️</span> <span id="timer" aria-label="Sisa waktu">90:00</span></div></div>
+        <div class="d-flex justify-content-between small text-secondary mt-3 mb-2"><span id="question-counter">Soal 1 dari 25</span><span id="answered-counter">Terjawab 0 dari 25</span></div>
+        <div class="progress" role="progressbar" aria-label="Progres asesmen" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+      </div>
+      <article class="screen-panel question-panel">
+        <div class="question-number" id="question-number">SOAL 01</div>
+        <h3 class="question-text" id="question-text">Pertanyaan akan tampil di sini.</h3>
+        <div id="options-list" class="options-list" role="group" aria-label="Pilihan jawaban"></div>
+        <div id="feedback" class="feedback-box d-none mt-4" role="status" aria-live="assertive"></div>
+        <div class="d-flex justify-content-end mt-4"><button id="next-btn" class="btn btn-primary btn-lg" type="button" disabled>Soal Berikutnya <span aria-hidden="true">→</span></button></div>
+      </article>
+      <p class="text-center small text-secondary mt-3">Periksa pertanyaan dan pilih satu jawaban. Setiap soal hanya dapat dijawab satu kali.</p>
+    </section>
+
+    <section id="result-screen" class="screen-panel result-panel mx-auto d-none" aria-live="polite">
+      <div class="result-emoji" id="result-emoji" aria-hidden="true">🎉</div><span class="eyebrow">ASESMEN SELESAI</span><h1 class="display-6 fw-bold mt-2" id="result-heading">Hasil Asesmen</h1><p class="text-secondary" id="result-message"></p>
+      <div class="score-card my-4"><span>Nilai akhir</span><strong id="final-score">0</strong><small>dari 100</small></div>
+      <div class="row g-3 text-center mb-4">
+        <div class="col-4"><div class="result-stat"><strong id="correct-count">0</strong><span>Benar</span></div></div>
+        <div class="col-4"><div class="result-stat"><strong id="wrong-count">0</strong><span>Salah</span></div></div>
+        <div class="col-4"><div class="result-stat"><strong id="unanswered-count">0</strong><span>Belum dijawab</span></div></div>
+      </div>
+      <div class="table-responsive"><table class="table result-table"><tbody><tr><th scope="row">Nama siswa</th><td id="result-name"></td></tr><tr><th scope="row">NIS</th><td id="result-nis"></td></tr><tr><th scope="row">Kelas</th><td id="result-class"></td></tr><tr><th scope="row">Waktu pengerjaan</th><td id="result-time"></td></tr><tr><th scope="row">Status</th><td id="result-status"></td></tr></tbody></table></div>
+      <div class="alert alert-warning small text-start mt-3"><strong>Catatan:</strong> Hasil ini ditampilkan di perangkat yang digunakan dan belum dikirim atau disimpan ke server. Simpan/cetak hasil jika diperlukan.</div>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4"><button class="btn btn-primary btn-lg" id="print-btn" type="button">Cetak / Simpan PDF</button><button class="btn btn-outline-primary btn-lg" id="restart-btn" type="button">Kembali ke Awal</button></div>
+    </section>
+    <footer class="text-center small text-secondary py-4">BAHASA INDONESIA • Asesmen Teks Prosedur • SMK Kelas XI</footer>
+  </main>
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
